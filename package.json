@@ -1,0 +1,12 @@
+{
+  "name": "PracticePanther",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "*",
+    "execa": "^8.0.1",
+    "faker": "^6.6.6",
+    "typescript": "*"
+  },
+  "dependencies": {}
+}

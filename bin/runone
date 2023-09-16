@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cypress run --headed --no-exit "$1"
