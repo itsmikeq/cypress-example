@@ -10,7 +10,9 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (email = 'shayriley2022+1@gmail.com', password = 'AWD1995') => {
+// use CYPRESS_USERNAME and CYPRESS_PASSWORD. The CYPRESS_ part is removed
+// @ts-ignore
+Cypress.Commands.add('loginViaUI', (email: string = Cypress.env('USERNAME'), password: string = Cypress.env('PASSWORD')) => {
     cy.visit('https://app.practicepanther.com/')
     // https://on.cypress.io/type
     cy.get('#loginForm > div:nth-child(5) > div > input')
@@ -20,6 +22,14 @@ Cypress.Commands.add('login', (email = 'shayriley2022+1@gmail.com', password = '
         .type(password)
     cy.get('#loginForm > div.form-actions > button').click()
 })
+
+Cypress.Commands.add('loginWithSession', (email: string = Cypress.env('USERNAME'), password: string = Cypress.env('PASSWORD')) => {
+    cy.session([email, password], () => {
+        cy.loginViaUI(email, password);
+    })
+});
+
+
 //
 //
 // -- This is a child command --
